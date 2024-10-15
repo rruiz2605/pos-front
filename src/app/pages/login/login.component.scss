@@ -1,0 +1,25 @@
+.form-control-group {
+    @apply relative;
+    
+    input {
+        @apply 
+            placeholder-transparent
+            h-10 
+            w-full 
+            rounded-lg 
+            border 
+            border-gray-300 
+            text-gray-900 
+            focus:outline-none 
+    }
+
+    label {
+        @apply 
+            absolute 
+            left-3 
+            text-gray-600 
+            text-sm 
+            bg-white 
+            px-1
+    }
+}

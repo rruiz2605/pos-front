@@ -1,0 +1,23 @@
+<div class="relative pt-3" [ngClass]="class()">
+    <ng-content/>
+    <label
+        (click)="labelClick()"
+        [ngClass]="colorClass()"
+        class="
+            absolute
+            bg-white
+            px-1
+            left-3
+            top-0.5
+            text-sm
+            peer-placeholder-shown:text-base
+            peer-placeholder-shown:top-5
+            transition-all
+            peer-focus:top-0.5
+            peer-focus:text-sm">
+        {{label()}}
+    </label>
+    <p class="flex items-center ms-1 text-xs" [ngClass]="colorClass()">
+        {{message()}} &nbsp;
+    </p>
+</div>

@@ -1,0 +1,17 @@
+<nav class="flex px-5 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-primary" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+            <div class="inline-flex items-center text-sm font-medium">
+                <div class="mat-icon text-2xl mr-2">{{iconName()}}</div> {{ title() }}
+            </div>
+        </li>
+        @for(st of subtitles(); track $index) {
+            <li>
+                <div class="flex items-center">
+                    <div class="mat-icon text-2xl">chevron_right</div>
+                    <div class="ml-1 text-sm font-medium md:ml-2">{{st}}</div>
+                </div>
+            </li>
+        }
+    </ol>
+</nav>

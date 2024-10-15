@@ -1,0 +1,56 @@
+table {
+    @apply
+        w-full
+        shadow-md
+        rounded-md
+        overflow-hidden
+        table-auto
+        border
+        border-gray-400;
+
+    thead {
+        tr {
+            @apply
+                bg-primary
+                text-white
+                text-center
+                divide-x
+                divide-white;
+        }
+    }
+
+    tbody {
+        tr {
+            @apply
+                border-t
+                border-gray-300;
+
+            &:nth-child(even) {
+                @apply bg-red-50;
+            }
+
+            &:hover {
+                @apply bg-red-100;
+            }
+        }
+    }
+}
+
+th, td {
+    @apply
+        py-2
+        px-4;
+}
+
+.btn-action {
+    @apply
+        rounded-full
+        border
+        border-primary
+        bg-white
+        text-primary
+        px-1.5
+        pt-0.5
+        hover:bg-primary
+        hover:text-white;
+}

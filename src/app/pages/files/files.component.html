@@ -1,0 +1,50 @@
+<div class="flex space-y-4 lg:space-x-6 mb-8 flex-col lg:flex-row">
+    <div class="flex flex-col space-y-4">
+        <div class="rounded-lg shadow-lg bg-gray-200 p-4">
+            <div class="font-medium mb-2">Pasos para el envío de información:</div>
+            <div><strong>1.</strong> Elija el <span class="text-primary font-medium">Periodo</span> para el cuál desea enviar información.</div>
+            <div><strong>2.</strong> Haga click en el botón <span class="text-primary font-medium">Seleccionar Archivos</span>.</div>
+            <div><strong>3.</strong> Elija los <span class="text-primary font-medium">Archivos Excel</span> que contienen la información a enviar y haga click en aceptar.</div>
+        </div>
+
+        <app-alert type="info" title="Información" content="Si selecciona un archivo que ya ha enviado anteriormente en el mismo periodo, el sistema le indicará que este será reemplazado y usted deberá confirmar o cancelar la acción"></app-alert>
+    </div>
+
+    <form-field label="Periodo" class="min-w-[10rem]">
+        <select formInput>
+            @for (p of periods(); track p.code) {
+                @if (p.code) {
+                    <option value="{{p.code}}">{{p.year}} - {{p.period}}</option>
+                } @else {
+                    <option disabled class="font-bold">{{p.year}}</option>
+                }
+            }
+        </select>
+    </form-field>
+
+    <div class="">
+        <button class="btn-primary flex" (click)="fileUploader.click()">
+            <div class="mat-icon text-xl me-2 self-center">cloud_upload</div>
+            Seleccionar Archivos
+        </button>
+        <input #fileUploader type="file" multiple class="hidden" />
+    </div>
+</div>
+
+<data-table [data]="loadedFiles()">
+    <dt-column title="Archivo" field="fileName" />
+    <!-- <dt-column title="Tamaño" field="size" class="text-center"/> -->
+    <dt-column title="Estado" field="status" class="text-center">
+        <ng-template let-value="value" let-data="data">
+            <div class="border rounded p-4 flex space-x-4 justify-center" [ngClass]="{'bg-warn': value == 'P', 'bg-blue-500 text-white': value == 'CV', 'bg-info': value == 'VV', 'bg-danger': value == 'O', 'bg-success': value == 'VF'}">
+                <div>{{ value | fromList: statusList() }}</div>
+                @if (value == 'O') {
+                    <div class="mat-icon text-xl text-primary border border-primary rounded-full px-1 hover:bg-white" role="button" title="Ver lista de observaciones">description</div>
+                }
+            </div>
+        </ng-template>
+    </dt-column>
+    <dt-action icon="cloud_upload" (action)="download($event)" tooltip="Reemplazar Archivo" />
+    <dt-action icon="cloud_download" (action)="download($event)" tooltip="Descargar Archivo" />
+    <dt-action icon="file_save" (action)="download($event)" tooltip="Descargar Plantilla" />
+</data-table>

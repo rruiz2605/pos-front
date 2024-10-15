@@ -1,0 +1,40 @@
+<div class="flex flex-wrap lg:flex-nowrap place-content-around">
+
+    <!--Period Card begin-->
+     <div>
+         <div class="flex flex-col border rounded divide-y divide-info text-center bg-info text-info border-info hover:border-info hover:border-2">
+             <div class="p-1 text-gray-800 font-medium flex justify-center align-middle" role="button">
+                 <span class="me-1">Periodo</span>
+                <span class="mat-icon text-xl">keyboard_arrow_down</span>
+             </div>
+             <div class="flex flex-col p-2">
+                 <span class="text-2xl font-bold">2024</span>
+                 <span class="text-2xl font-bold">Semestre I</span>
+                 <span class="text-lg my-2 text-normal font-semibold">01/2024 - 06/2024</span>
+             </div>
+             <div class="flex flex-col p-2">
+                 <span class="text-lg text-danger font-semibold">Fecha Límite: 31/07/2024</span>
+             </div>
+         </div>
+     </div>
+    <!--Period Card end-->
+
+    <!--Statistics Card begin-->
+    <div>
+        <div class="grid grid-cols-2 gap-10 mx-5">
+            <app-alert type="warn" title="5" content="Archivos pendientes" />
+            <app-alert type="danger" title="3" content="Archivos con errores" />
+            <app-alert type="info" title="10" content="Archivos enviados" />
+            <app-alert type="success" title="9" content="Archivos validados" />
+        </div>
+    </div>
+    <!--Statistics Card end-->
+
+    <!--Last files Card begin-->
+    <div class="border rounded-lg shadow-xl px-6 py-4 shrink">
+        <span class="text-xl text-normal font-bold">Últimos Archivos Enviados</span>
+        <app-time-line [items]="timeLineItems()" />
+    </div>
+    <!--Last files Card end-->
+
+</div>
