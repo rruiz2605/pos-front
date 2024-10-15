@@ -54,12 +54,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         font-family: "MaterialOutlined";
     }
 }
-
-.btn {
-    @apply px-4 py-2 rounded-md text-white border;
-}
-
-.btn-primary {
-    @extend .btn;
-    @apply bg-primary border-primary;
-}
