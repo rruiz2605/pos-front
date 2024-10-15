@@ -11,10 +11,9 @@ import { MaterialModule } from '@modules/material.module';
   styleUrl: './list-page.component.scss'
 })
 export class ListPageComponent {
-  mainTitle = input.required<string>();
   titleList = input.required<string>();
   showAddButton = input<boolean>(true);
-  titleAddButton = input<string>('Nuevo');
+  addButtonTitle = input<string>('Nuevo');
 
   searchClick = output();
   clearFiltersClick = output();
