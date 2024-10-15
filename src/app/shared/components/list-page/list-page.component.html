@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between">
+        <h2 class="text-blue">{{mainTitle()}}</h2>
+        <ng-content select="[mainButtons]">
+            @if (showAddButton()) {
+                <button mat-raised-button color="primary" [routerLink]="['./agregar']">
+                    <mat-icon>add</mat-icon>
+                    {{titleAddButton()}}
+                </button>
+            }
+        </ng-content>
+    </div>
+    <mat-card class="mb-4">
+        <mat-card-content>
+            <ng-content select="[filters]" />
+        </mat-card-content>
+        <mat-card-content class="d-flex justify-content-center">
+            <button mat-raised-button color="primary" class="mx-2" (click)="searchClick.emit()">
+                <mat-icon>search</mat-icon>
+                Buscar
+            </button>
+            <button mat-stroked-button class="mx-2" (click)="clearFiltersClick.emit()">
+                <mat-icon>clear</mat-icon>
+                Limpiar
+            </button>
+        </mat-card-content>
+    </mat-card>
+
+    <h2 class="text-blue">{{titleList()}}</h2>
+    <mat-card>
+        <mat-card-content>
+            <ng-content select="[data-table]" />
+        </mat-card-content>
+    </mat-card>
+</div>
