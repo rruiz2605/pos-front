@@ -27,8 +27,10 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.menuItems.set([
       { title: 'Dashboard', iconName: 'analytics', url: '' },
-      { title: 'Enviar Archivos', iconName: 'upload_file', url: '/archivos' },
-      { title: 'Observaciones', iconName: 'report', url: '/observaciones' },
+      { title: 'Ventas', iconName: 'point_of_sale', url: '/ventas' },
+      { title: 'Clientes', iconName: 'groups', url: '/clientes' },
+      { title: 'Productos', iconName: 'inventory', url: '/productos' },
+      { title: 'Compras', iconName: 'shopping_cart', url: '/compras' },
       { title: 'Reportes', iconName: 'summarize', url: '/reportes' }
     ]);
     this.selectOption.emit(this.menuItems()[0]);

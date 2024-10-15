@@ -13,10 +13,6 @@ export const routes: Routes = [
             {
                 path: 'home',
                 loadComponent: () => import('./pages/home/home.component')
-            },
-            {
-                path: 'archivos',
-                loadComponent: () => import('./pages/files/files.component')
             }
         ]
     },
