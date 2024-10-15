@@ -1,7 +1,10 @@
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
-import { Component, contentChild, contentChildren, input, output, TemplateRef } from '@angular/core';
+import { Component, computed, contentChild, contentChildren, input, output, TemplateRef } from '@angular/core';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Constants } from '@models/constants';
 import { IActionInfo } from '@models/data-table';
+import { MaterialModule } from '@modules/material.module';
 
 @Component({
   selector: 'dt-column',
@@ -33,11 +36,12 @@ export class DtActionComponent {
 @Component({
   selector: 'data-table',
   standalone: true,
-  imports: [CommonModule, NgTemplateOutlet],
+  imports: [CommonModule, NgTemplateOutlet, MaterialModule, MatTableModule, MatPaginatorModule],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss'
 })
 export class DataTableComponent {
+  ngClass = input<string>('');
   centerButtons = input<boolean>(true);
   emptyMessage = input<string>('No se encontraron registros');
   pageable = input<boolean>(true);
@@ -46,7 +50,21 @@ export class DataTableComponent {
   apiUrl = input<string>('');
   dataQuery = input<any>({});
   data = input<any[]>([]);
+  dataSource = new MatTableDataSource<any>([]);
   
   columns = contentChildren(DtColumnComponent);
   buttons = contentChildren(DtActionComponent);
+  displayedColumns = computed(() => {
+    let titles = this.columns().map(column => column.field());
+    if (this.buttons().length > 0) {
+      titles.push('actions');
+    }
+    return titles;
+  });
+
+  changePageEvent(e: PageEvent) {
+    if (this.paginationType() === Constants.PaginationType.SERVER && this.apiUrl()) {
+      // this.reloadTable(e.pageIndex);
+    }
+  }
 }
