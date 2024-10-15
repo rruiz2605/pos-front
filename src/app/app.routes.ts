@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { clientsRoutes } from './pages/clients/routes';
 
 export const routes: Routes = [
     {
@@ -13,7 +14,8 @@ export const routes: Routes = [
             {
                 path: 'home',
                 loadComponent: () => import('./pages/home/home.component')
-            }
+            },
+            ...clientsRoutes
         ]
     },
     {
