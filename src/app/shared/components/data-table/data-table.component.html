@@ -1,0 +1,44 @@
+<table>
+    <thead>
+        <tr>
+            @for (c of columns(); track $index) {
+                <th>{{ c.title() }}</th>
+            }
+            @if(buttons().length > 0) {
+                <th>Acciones</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (r of data(); track $index; let i = $index) {
+            <tr>
+                @for (c of columns(); track $index) {
+                    @if (c.template()) {
+                        <td [ngClass]="c.class()">
+                            <ng-container [ngTemplateOutlet]="c.template()!" [ngTemplateOutletContext]="{value: r[c.field()], data: r}"></ng-container>
+                        </td>
+                    } @else {
+                        <td [ngClass]="c.class()">{{ r[c.field()] }}</td>
+                    }
+                }
+                @if(buttons().length > 0) {
+                    <td class="text-center">
+                        <div class="flex flex-nowrap space-x-2">
+                            @for (b of buttons(); track $index; let j = $index) {
+                                <button class="btn-action" (click)="b.action.emit({data: r, index: i})" [title]="b.tooltip() ?? ''">
+                                    <span class="mat-icon text-xl">{{b.icon()}}</span>
+                                </button>
+                            }
+                        </div>
+                    </td>
+                }
+            </tr>
+        } @empty {
+            <tr class="text-center">
+                <td [attr.colspan]="columns().length + (buttons().length > 0 ? 1 : 0)">
+                    No hay registros
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

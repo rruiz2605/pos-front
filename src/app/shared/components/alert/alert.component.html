@@ -1,0 +1,14 @@
+<div class="w-full p-4 text-sm rounded-lg flex items-center"
+    [ngClass]="ngClass()" role="alert">
+    <span *ngIf="showIcon()" class="mat-icon me-2 text-2xl">{{iconName()}}</span>
+    <div class="flex-1">
+        @if (textInline()) {
+            <p>
+                <span class="font-medium">{{title()}}</span> {{content()}}
+            </p>
+        } @else {
+            <p *ngIf="title()" class="font-medium">{{title()}}</p>
+            <div [innerHTML]="content()"></div>
+        }
+    </div>
+</div>

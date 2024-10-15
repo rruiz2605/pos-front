@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@layer base {
+    :root {
+        --color-primary: #BF0909;
+        --color-secondary: #374151;
+        --color-success: #15803d;
+        --color-info: #0369a1;
+        --color-warn: #b45309;
+        --color-danger: #dc2626;
+        --color-normal: #4b5563;
+        --color-light: #9ca3af;
+
+        --bg-primary: #BF0909;
+        --bg-secondary: #6b7280;
+        --bg-success: #bbf7d0;
+        --bg-info: #bae6fd;
+        --bg-warn: #fde68a;
+        --bg-danger: #fecaca;
+    }
+  
+    :root[class~="dark"] {
+        --color-primary: #BF0909;
+        --color-secondary: #4b5563;
+        --color-success: #14532d;
+        --color-info: #0c4a6e;
+        --color-warn: #78350f;
+        --color-danger: #7f1d1d;
+        --color-normal: #e5e7eb;
+        --color-light: #f3f4f6;
+
+        --bg-primary: #BF0909;
+        --bg-secondary: #9ca3af;
+        --bg-success: #86efac;
+        --bg-info: #7dd3fc;
+        --bg-warn: #fcd34d;
+        --bg-danger: #fca5a5;
+    }
+
+    @font-face{
+        font-family: "MaterialOutlined";
+        src: url('/fonts/MaterialOutlined.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .mat-icon {
+        font-family: "MaterialOutlined";
+    }
+}
