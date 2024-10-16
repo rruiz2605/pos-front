@@ -8,7 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @layer base {
     :root {
-        --color-primary: #BF0909;
+        --color-primary: #005CBB;
         --color-secondary: #374151;
         --color-success: #15803d;
         --color-info: #0369a1;
@@ -17,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         --color-normal: #4b5563;
         --color-light: #9ca3af;
 
-        --bg-primary: #BF0909;
+        --bg-primary: #D7E3FF;
         --bg-secondary: #6b7280;
         --bg-success: #bbf7d0;
         --bg-info: #bae6fd;
@@ -26,7 +26,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
   
     :root[class~="dark"] {
-        --color-primary: #BF0909;
+        --color-primary: #D7E3FF;
         --color-secondary: #4b5563;
         --color-success: #14532d;
         --color-info: #0c4a6e;
@@ -35,7 +35,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         --color-normal: #e5e7eb;
         --color-light: #f3f4f6;
 
-        --bg-primary: #BF0909;
+        --bg-primary: #005CBB;
         --bg-secondary: #9ca3af;
         --bg-success: #86efac;
         --bg-info: #7dd3fc;
