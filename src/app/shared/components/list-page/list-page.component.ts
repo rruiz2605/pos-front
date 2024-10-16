@@ -14,6 +14,7 @@ export class ListPageComponent {
   titleList = input.required<string>();
   showAddButton = input<boolean>(true);
   addButtonTitle = input<string>('Nuevo');
+  addRoute = input<string | any[]>(['./agregar']);
 
   searchClick = output();
   clearFiltersClick = output();
