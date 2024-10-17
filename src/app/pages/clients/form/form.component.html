@@ -1,0 +1,17 @@
+<app-form-page [form]="form" [actionSettings]="actionSettings()">
+    <div fields [formGroup]="form" class="flex justify-center">
+        <div class="w-full flex flex-col lg:w-1/4 md:w-1/3 sm:w-1/2">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre del cliente" formControlName="name">
+                <mat-error>{{errorMessages().name}}</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Número de Celular</mat-label>
+                <input matInput placeholder="Número de Celular" formControlName="cellphone">
+                <mat-error>{{errorMessages().cellphone}}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</app-form-page>
