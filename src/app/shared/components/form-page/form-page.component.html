@@ -1,0 +1,57 @@
+<div class="flex mb-4 justify-end">
+    <ng-content select="[buttons]">
+        <div class="hidden sm:flex flex-row space-x-4">
+            @if (showSaveButton()) {
+                <button mat-flat-button (click)="save()">
+                    <mat-icon>{{saveButtonIcon()}}</mat-icon>
+                    {{saveButtonText()}}
+                </button>
+            }
+            @if (showClearButton()) {
+                <button mat-stroked-button (click)="clear()">
+                    <mat-icon>clear</mat-icon>
+                    Limpiar
+                </button>
+            }
+            @if (showCancelButton()) {
+                <button mat-raised-button (click)="cancel()">
+                    <mat-icon>{{cancelButtonIcon()}}</mat-icon>
+                    {{cancelButtonText()}}
+                </button>
+            }
+        </div>
+        <div class="block sm:hidden">
+            @if (showSaveButton() || showClearButton() || showCancelButton()) {
+                <button mat-flat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>arrow_drop_down</mat-icon>
+                    Acciones
+                </button>
+                <mat-menu #menu="matMenu">
+                    @if (showSaveButton())  {
+                        <button mat-menu-item (click)="save()">
+                            <mat-icon>{{saveButtonIcon()}}</mat-icon>
+                            {{saveButtonText()}}
+                        </button>
+                    }
+                    @if (showClearButton()) {
+                        <button mat-menu-item (click)="clear()">
+                            <mat-icon>clear</mat-icon>
+                            <span>Limpiar</span>
+                        </button>
+                    }
+                    @if (showCancelButton()) {
+                        <button mat-menu-item (click)="cancel()">
+                            <mat-icon>{{cancelButtonIcon()}}</mat-icon>
+                            {{cancelButtonText()}}
+                        </button>
+                    }
+                </mat-menu>
+            }
+        </div>
+    </ng-content>
+</div>
+<mat-card class="flex">
+    <mat-card-content>
+        <ng-content select="[fields]" />
+    </mat-card-content>
+</mat-card>
