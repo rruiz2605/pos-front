@@ -11,6 +11,7 @@
       "@directives/*": ["./src/app/shared/directives/*"],
       "@pipes/*": ["./src/app/shared/pipes/*"],
       "@modules/*": ["./src/app/shared/modules/*"],
+      "@interceptors/*": ["./src/app/shared/interceptors/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
