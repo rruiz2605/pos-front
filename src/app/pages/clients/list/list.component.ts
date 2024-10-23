@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BaseComponent } from '@components/base-component';
 import { ListPageComponent } from '@components/list-page/list-page.component';
 import { DataTableModule } from '@modules/data-table.module';
 import { MaterialModule } from '@modules/material.module';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-list',
@@ -13,8 +14,13 @@ import { MaterialModule } from '@modules/material.module';
   styleUrl: './list.component.scss'
 })
 export default class ListComponent extends BaseComponent {
-  constructor() {
+  readonly apiListUrl: string;
+  dataQuery = signal<any>({});
+
+  constructor(private clientService: ClientService) {
     super();
+
+    this.apiListUrl = this.clientService.paginatedListApiUrl;
 
     this.form = new FormGroup({
       cellphone: new FormControl(''),
@@ -24,4 +30,15 @@ export default class ListComponent extends BaseComponent {
     });
   }
 
+  search() {
+    this.dataQuery.set({
+      fullName: this.v('name'),
+      cellphoneNumber: this.v('cellphone')
+    });
+  }
+
+  clearFilters() {
+    this.form.reset();
+    this.search();
+  }
 }
