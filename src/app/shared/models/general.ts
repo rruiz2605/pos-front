@@ -67,3 +67,8 @@ export interface ICodeValue {
     code: string;
     value: string;
 }
+
+export interface IPaginatedList<T> {
+    content: T[];
+    total: number;
+}
