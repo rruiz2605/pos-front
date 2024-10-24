@@ -1,0 +1,34 @@
+<div class="flex justify-end py-2">
+    <ng-content select="[mainButtons]">
+        @if (showAddButton()) {
+            <a mat-raised-button [routerLink]="addRoute()">
+                <mat-icon>add</mat-icon>
+                {{addButtonTitle()}}
+            </a>
+        }
+    </ng-content>
+</div>
+<mat-card class="mb-8">
+    <mat-card-content>
+        <ng-content select="[filters]" />
+    </mat-card-content>
+    <mat-card-content>
+        <div class="mx-auto space-x-2 flex justify-center">
+            <button mat-flat-button (click)="searchClick.emit()">
+                <mat-icon>search</mat-icon>
+                Buscar
+            </button>
+            <button mat-stroked-button (click)="clearFiltersClick.emit()">
+                <mat-icon>clear</mat-icon>
+                Limpiar
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<h2 class="text-primary">{{titleList()}}</h2>
+<mat-card>
+    <mat-card-content>
+        <ng-content select="[data-table]" />
+    </mat-card-content>
+</mat-card>

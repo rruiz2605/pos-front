@@ -1,0 +1,28 @@
+<app-list-page titleList="Listado de Clientes"
+    (searchClick)="search()" (clearFiltersClick)="clearFilters()">
+    <div filters class="grid grid-cols-3 gap-4" [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="cellphone" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="1">Activo</mat-option>
+                <mat-option value="0">Inactivo</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <ng-container data-table>
+        <data-table [apiUrl]="apiListUrl" [dataQuery]="dataQuery()">
+            <dt-column title="Nombre" field="fullName" />
+            <dt-column title="Número de Celular" field="cellphoneNumber" />
+
+            <dt-action icon="visibility" tooltip="Ver Detalle" />
+        </data-table>
+    </ng-container>
+</app-list-page>

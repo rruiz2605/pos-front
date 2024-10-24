@@ -4,6 +4,6 @@ export interface IActionInfo {
 }
 
 export interface IPagingRequest {
-    pageNumber?: number;
+    page?: number;
     pageSize?: number;
 }
